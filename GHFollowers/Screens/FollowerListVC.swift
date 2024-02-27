@@ -38,6 +38,20 @@ class FollowerListVC: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuserID)
     }
     
+    func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout{
+        let width                       = view.bounds.width
+        let padding: CGFloat            = 12
+        let minimumItemSpacing: CGFloat = 10
+        let availableWith = width - (padding * 2) - (minimumItemSpacing * 2)
+        let itemWidth                   = availableWith / 3
+        
+        let flowLayout                  = UICollectionViewFlowLayout()
+        flowLayout.sectionInset         = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        flowLayout.itemSize             = CGSize(width: itemWidth, height: itemWidth + 40)
+        
+        return flowLayout
+    }
+    
     func getFollowers() {
         NetworkManager.shared.getFollowers(for: username, page: 1) { result in
             
