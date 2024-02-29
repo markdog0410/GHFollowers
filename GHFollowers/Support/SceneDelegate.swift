@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let barAppearance = UINavigationBarAppearance()
-        barAppearance.backgroundColor = .white
+        barAppearance.backgroundColor = .systemBackground
         UINavigationBar.appearance().scrollEdgeAppearance = barAppearance
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = .systemGreen
 
         let tabbarAppearence = UITabBarAppearance()
-        tabbarAppearence.backgroundColor = .white
+        tabbarAppearence.backgroundColor = .systemBackground
         UITabBar.appearance().scrollEdgeAppearance = tabbarAppearence
 
         tabbar.viewControllers = [createSearchNC(), createFavoritesNC()]

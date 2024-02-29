@@ -22,6 +22,7 @@
 		548258192B8DCC7E006BDC12 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548258182B8DCC7E006BDC12 /* ErrorMessage.swift */; };
 		5482581C2B8DD38E006BDC12 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5482581B2B8DD38E006BDC12 /* FollowerCell.swift */; };
 		5482581F2B8DD429006BDC12 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5482581E2B8DD429006BDC12 /* GFAvatarImageView.swift */; };
+		548258212B9088F7006BDC12 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548258202B9088F7006BDC12 /* UIHelper.swift */; };
 		549089262B8C231A004F5BF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549089252B8C231A004F5BF6 /* AppDelegate.swift */; };
 		549089282B8C231A004F5BF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549089272B8C231A004F5BF6 /* SceneDelegate.swift */; };
 		5490892A2B8C231A004F5BF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549089292B8C231A004F5BF6 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		548258182B8DCC7E006BDC12 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		5482581B2B8DD38E006BDC12 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		5482581E2B8DD429006BDC12 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		548258202B9088F7006BDC12 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		549089222B8C231A004F5BF6 /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		549089252B8C231A004F5BF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		549089272B8C231A004F5BF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				548258182B8DCC7E006BDC12 /* ErrorMessage.swift */,
+				548258202B9088F7006BDC12 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				548258042B8C7E94006BDC12 /* GFTitleLabel.swift in Sources */,
 				548258002B8C41B4006BDC12 /* GFTextField.swift in Sources */,
 				548258192B8DCC7E006BDC12 /* ErrorMessage.swift in Sources */,
+				548258212B9088F7006BDC12 /* UIHelper.swift in Sources */,
 				548258162B8DB384006BDC12 /* NetworkManager.swift in Sources */,
 				549089282B8C231A004F5BF6 /* SceneDelegate.swift in Sources */,
 				548258062B8C84EB006BDC12 /* GFBodyLabel.swift in Sources */,
@@ -328,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -382,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -399,6 +403,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4CDH35M36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GHFollowers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -429,6 +434,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4CDH35M36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GHFollowers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
