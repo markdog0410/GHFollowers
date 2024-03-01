@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GHFollowers
 //
-//  Created by Tsai Ming Chen on 2024/2/27.
+//  Created by Tsai Ming Chen on 2024/3/1.
 //
 
 import Foundation
