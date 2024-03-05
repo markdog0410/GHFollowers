@@ -17,4 +17,9 @@ extension String {
         
         return dateFormatter.date(from: self)
     }
+    
+    func converToDisplayFormat() -> String {
+        guard let date = self.converToDate() else { return "N/A" }
+        return date.converToMonthYearFormat()
+    }
 }
