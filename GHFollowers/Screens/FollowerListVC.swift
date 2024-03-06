@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol FollowerListVCDelegate: class {
-    func didRequestFollowers(for username: String)
-}
-
-class FollowerListVC: UIViewController {
+class FollowerListVC: GFDataLoadingVC {
 
     enum Section {
         case main
@@ -26,6 +22,17 @@ class FollowerListVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var isLoadingMoreFollowers: Bool = false
+    
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.username = username
+        title = username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +58,7 @@ class FollowerListVC: UIViewController {
     
     @objc func addButtonTapped() {
         showLoadingView()
-        
+        isLoadingMoreFollowers = true
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
@@ -73,7 +80,7 @@ class FollowerListVC: UIViewController {
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something Wrong", message: error.rawValue, buttonTitle: "OK")
             }
-            
+            self.isLoadingMoreFollowers = false
         }
     }
     
@@ -86,11 +93,12 @@ class FollowerListVC: UIViewController {
     }
     
     func configureSearchController() {
-        let searchController                   = UISearchController()
-        searchController.searchResultsUpdater  = self
-        searchController.searchBar.delegate    = self
-        searchController.searchBar.placeholder = "Search for a username."
-        navigationItem.searchController        = searchController
+        let searchController                                  = UISearchController()
+        searchController.searchResultsUpdater                 = self
+        searchController.searchBar.placeholder                = "Search for a username."
+//      背景模糊
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController                       = searchController
     }
     
     func getFollowers(username: String, page: Int) {
@@ -142,8 +150,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else { return }
-            
+            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
             page += 1
             getFollowers(username: username, page: page)
         }
@@ -161,29 +168,30 @@ extension FollowerListVC: UICollectionViewDelegate {
     }
 }
 
-extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListVC: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            filteredFollowers.removeAll()
+            updateData(followers: followers)
+            isSearching = false
+            return
+        }
         isSearching = true
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(followers: filteredFollowers)
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        updateData(followers: followers)
-    }
-    
 }
 
-extension FollowerListVC: FollowerListVCDelegate {
+extension FollowerListVC: UserInfoVCDelegate {
     func didRequestFollowers(for username: String) {
         self.username   = username
         title           = username
         page            = 1
         followers.removeAll()
         filteredFollowers.removeAll()
-        collectionView.setContentOffset(.zero, animated: true)
+//        collectionView.setContentOffset(.zero, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         getFollowers(username: username, page: page)
     }
     
