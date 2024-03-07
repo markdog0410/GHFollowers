@@ -57,7 +57,7 @@ class GFItemInfoVC: UIViewController {
     }
     
     @objc func actionButtonTapped(){
-        
+        print("Action Tapped.")
     }
     
     private func layoutUI() {
