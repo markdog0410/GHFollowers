@@ -47,12 +47,13 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func downloadAvatarImage() {
-        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.avatarImageView.image = image
-            }
-        }
+        avatarImageView.downloadImage(url: user.avatarUrl)
+//        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                self.avatarImageView.image = image
+//            }
+//        }
     }
     
     func addSupview() {
